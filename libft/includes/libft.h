@@ -6,7 +6,7 @@
 /*   By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/07 18:10:38 by rgermain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/08 20:02:51 by alepercq    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/20 15:31:03 by alepercq    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -118,5 +118,6 @@ char			*ft_strncpychr(const char *str, int c);
 char			*ft_strcpychr(const char *str, int c);
 long			ft_intlen(int nb, int base);
 char			**ft_createtab(int nb, char c);
+int				ft_sqrt(int nb);
 
 #endif

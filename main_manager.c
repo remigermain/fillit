@@ -6,7 +6,7 @@
 /*   By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/31 15:57:16 by rgermain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 16:50:34 by alepercq    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/21 12:34:18 by alepercq    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,7 +42,6 @@ int		main_manager(char *files)
 	int		fd;
 	char	*str_map;
 	t_map	*list_map;
-//	int		**t_option;
 
 	str_map = NULL;
 	if ((fd = open(files, O_RDONLY)) < 1)
@@ -53,10 +52,6 @@ int		main_manager(char *files)
 		return (-1);
 	if (lst_create(&list_map, str_map) == -1)
 		return (-1);
-//	t_option = tab_init_manager(&list_map);
-	tab_init_manager(&list_map);
-//	lst_print_tab(&list_map);
-//	algo_solve(&list_map, t_option, cmax, lmax)
-//	algo_solve(&list_map, t_option, nb, (map * map + list_map->nb_tet))
+	tab_manager(&list_map);
 	return (1);
 }

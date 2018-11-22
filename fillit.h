@@ -6,7 +6,7 @@
 /*   By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/30 16:50:01 by rgermain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/15 17:33:53 by alepercq    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/22 11:55:53 by rgermain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,6 +49,7 @@ struct	s_algo
 	int				cmax;
 	int				lmax;
 	int				c_pos;
+	int				t_num;
 };
 
 /*
@@ -75,27 +76,47 @@ int		add_digit(char c);
 /*
 ** init tab && add posibility
 */
-int		tab_init_manager(t_map **list_map);
+int		tab_manager(t_map **list_map);
+int		**tab_init_manager(t_map **list_map, int map, int lmax);
 void	tab_init_tet(t_map **list_map, int **tab, int map);
 int		**add_posibility(t_map *lst_tmp, int **tab, int map, int i);
-int		square_tet(t_map *lst_tmp, int a, int b, int index);
+
+/*
+** tab utils
+*/
 int		**copy_line(t_map *lst_tmp, int **tab, int map, int i);
+int		square_tet(t_map *lst_tmp, int a, int b, int index);
+int		tab_def_map(t_map *lst_tmp);
 
 /*
 ** algorithme
 */
-int		algo_solve(t_map **lst_map, int **t_option, int cmax, int lmax);
-int		algo_solve_step(int **t_option, int tmax, int cmax, int lmax);
-int		**find_select(int **t_solved, t_algo *algos);
-t_algo	*algo_v_init(int tmax_val, int cmax_val, int lmax_val, int c_pos_val);
-int		**algo_t_init(int **t_option, int cmax, int lmax);
-int		find_min(int vala, int valb);
-int		find_c_pos(int **t_solve, t_algo *algos);
-//int		find_c_one(int **t_solved, t_algo *algos, int c_one);
-int		find_l_one(int **t_solved, t_algo *algos, int l_one);
-int		**remove_col(int **t_solved, t_algo *algos, int c_one);
-int		**remove_line(int **t_solved, t_algo *algos, int l_one);
-int		**remove_cl_(int **t_solved, t_algo *algos, int l_one);
+int		algo_solve(t_map **lst_map, int **i_option, int cmax, int lmax);
+t_algo	*algo_v_init(int tmax_v, int cmax_v, int lmax_v, int t_num_v);
+int		**algo_t_init(int **i_option, int cmax, int lmax);
+//t_pos	*sol_init(int t_num, t_pos **t_solpos);
+t_pos	*sol_init(t_pos **t_solpos);
+
+t_pos	*find_select(int **i_solve, t_algo *algos);
+int		find_c_pos(int **i_solve, t_algo *algos);
+int		find_l_one(int **i_solve, t_algo *algos, int l_one);
+t_pos	*find_sol(t_pos **t_solpos, int **i_solve, t_algo *algos, int l_o);
+
+int		**remove_col(int **i_solve, t_algo *algos, int c_one);
+int		**remove_line(int **i_solve, t_algo *algos, int l_one);
+int		**remove_cl(int **i_solve, t_algo *algos, int l_one);
+
+int		col_min(int vala, int valb);
+int		col_sum(int **i_solve, t_algo *algos, int i_c);
+//t_pos	*tpos_new(char letter);
+t_pos	*tpos_new(void);
+void	tpos_add(t_pos **alst, t_pos *blst);
+
+/*
+** tab validation
+*/
+int		lig_sum(int **t_solved, t_algo *algos, int i_l);
+int		isolve_check(int **t_option, t_algo *algos);
 
 /*
 ** utils
@@ -108,5 +129,7 @@ int		**ft_create_ntab2(int lin, int col, int nb);
 void	ft_print_ntab(int **tab, int lin, int col);
 void	ft_print_ntab2(int **tab, int lin, int col);
 int		index_base(int *tab, int map, int nb_tet, int base);
+int		printlst_final(t_pos *lst, int map);
+int		ft_printabn(char **tab);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/01 15:39:03 by rgermain     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/09 17:26:41 by alepercq    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/20 15:28:52 by alepercq    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -41,7 +41,7 @@ SRC		=	ft_atoi.c ft_bzero.c \
 			ft_strcapitalize.c ft_strlowcase.c ft_itoa_base.c ft_isspace.c \
 			ft_isblank.c ft_iscntrl.c ft_isgraph.c ft_isxdigit.c \
 			ft_strupcase.c get_next_line.c ft_printtab.c ft_strncpychr.c \
-			ft_strcpychr.c ft_intlen.c ft_createtab.c
+			ft_strcpychr.c ft_intlen.c ft_createtab.c ft_sqrt.c
 
 OBJ		=	$(SRC:.c=.o)
 

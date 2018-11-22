@@ -6,7 +6,7 @@
 #    By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/01 15:39:03 by rgermain     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/13 14:49:49 by alepercq    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/21 16:28:47 by alepercq    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -22,9 +22,9 @@ INCLUDE	=	-Iincludes
 HEADER	=	fillit.h color.h
 
 SRC		=	main.c main_manager.c checkfiles.c lst_init.c \
-			tab_init_manager.c \
+			tab_manager.c tab_utils.c \
 			algo_manager.c algo_u_init.c algo_u_find.c algo_u_remove.c \
-			utils.c
+			algo_utils.c utils.c algo_valid.c
 
 OBJ		=	$(SRC:.c=.o)
 

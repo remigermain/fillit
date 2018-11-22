@@ -5,93 +5,62 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: alepercq <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/08 16:44:36 by alepercq     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/15 17:32:59 by alepercq    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/11/20 11:16:25 by alepercq     #+#   ##    ##    #+#       */
+/*   Updated: 2018/11/22 11:46:57 by alepercq    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		**find_select(int **t_solved, t_algo *algos)
+t_pos	*find_select(int **i_solve, t_algo *algos)
 {
 	int		l_one;
+	t_pos	*t_solpos;
 
-printf("\n%s | ", "find_select");
-printf("cmax : %d | ", algos->cmax);
-printf("lmax : %d | ", algos->lmax);
-printf("c_pos : %d\n", algos->c_pos);
-//printf("l_pos : %d\n", algos->l_pos);
-//printf("\n%s\n", "begin find select");
-//ft_print_ntab2(t_solved, (algos->lmax - 1), (algos->cmax + 1));
-
-	while (algos->c_pos < algos->cmax)
+printf("\nCONFIG -> cmax: %d | lmax: %d | c_pos.init: %d | \n",
+	algos->cmax, algos->lmax, algos->c_pos);
+	t_solpos = tpos_new();
+	while (algos->t_num <= algos->tmax)
 	{
-printf("c_pos[%d] | ", algos->c_pos);
-		l_one = find_l_one(t_solved, algos, algos->c_pos);
-		if (l_one != -1)
-		{
-			t_solved = remove_cl_(t_solved, algos, l_one);
-ft_print_ntab2(t_solved, (algos->lmax - 1), (algos->cmax + 1));
-printf("%s", "l_one -->-");
-			t_solved = remove_line(t_solved, algos, l_one);
-		}
-printf("%s", "c_pos -->-");
-		t_solved = remove_col(t_solved, algos, algos->c_pos);
-ft_print_ntab2(t_solved, (algos->lmax - 1), (algos->cmax + 1));
-		algos->c_pos = algos->c_pos + 1;
-		algos->c_pos = find_c_pos(t_solved, algos);
+printf("TNB[%d] -> ", algos->t_num);
+		algos->c_pos = find_c_pos(i_solve, algos);
+		l_one = find_l_one(i_solve, algos, algos->c_pos);
+		if (l_one == -1)
+			return (NULL);
+		t_solpos = find_sol(&t_solpos, i_solve, algos, l_one);
+		if (algos->t_num == algos->tmax)
+			return (t_solpos);
+		i_solve = remove_cl(i_solve, algos, l_one);
+printf("%s", "l_one --> ");
+		i_solve = remove_line(i_solve, algos, l_one);
+printf("%s", "c_pos --> ");
+		i_solve = remove_col(i_solve, algos, algos->c_pos);
+ft_print_ntab2(i_solve, algos->lmax, algos->cmax);
+		algos->c_pos = algos->tmax - 1;
+		algos->t_num = algos->t_num + 1;
+		t_solpos = sol_init(&t_solpos);
 	}
-	return (t_solved);
+	return (t_solpos);
 }
 
-int		algo_solve_step(int **t_option, int tmax, int cmax, int lmax)
+int		algo_solve(t_map **lst_map, int **i_option, int cmax, int lmax)
 {
-	int		t_num;
-	int		**t_solved;
 	t_algo	*algos;
-
-	t_num = 1;
-	algos = algo_v_init(tmax, cmax, lmax, tmax - 1);
-	while (t_num <= tmax)
-	{
-		t_solved = algo_t_init(t_option, cmax, lmax);
-printf("##### IN Tm[%d]\n", t_num);
-		algos->c_pos = find_c_pos(t_solved, algos);
-		t_solved = find_select(t_solved, algos);
-printf("\n##### OUT Tm[%d]\n", t_num);
-ft_print_ntab2(t_solved, (algos->lmax - 1), (algos->cmax + 1));
-		free(t_solved);
-		t_num = t_num + 1;
-	}
-	return (0);
-}
-
-int		algo_solve(t_map **lst_map, int **t_option, int cmax, int lmax)
-{
-//	int		t_num;
-//	int		**t_solved;
 	t_map	*l_solve;
-//	t_algo	*algos;
+	int		**i_solve;
+	t_pos	*t_solpos;
 
-//	t_num = 1;
 	l_solve = *lst_map;
-
-	algo_solve_step(t_option, l_solve->nb_tet, cmax, lmax);
-
-////	algos = algo_v_init(cmax, lmax, l_solve->nb_tet - 1, 0);
-//	algos = algo_v_init(cmax, lmax, l_solve->nb_tet - 1);
-//	while (t_num <= l_solve->nb_tet)
-//	{
-//		t_solved = algo_t_init(t_option, cmax, lmax);
-//printf("##### IN Tm[%d]\n", t_num);
-//		algos->c_pos = find_c_pos(t_solved, algos);
-////		algos->l_pos = find_l_pos(t_solved, algos);
-//		t_solved = find_select(t_solved, algos);
-//printf("\n##### OUT Tm[%d]\n", t_num);
-//ft_print_ntab2(t_solved, (algos->lmax - 1), (algos->cmax + 1));
-//		free(t_solved);
-//		t_num = t_num + 1;
-//	}
+	algos = algo_v_init(l_solve->nb_tet, cmax, lmax, 1);
+	if (isolve_check(i_option, algos) == -1)
+		return (-1);
+	i_solve = algo_t_init(i_option, cmax, lmax);
+	t_solpos = find_select(i_solve, algos);
+	free(i_solve);
+	if (t_solpos == NULL)
+		return (-1);
+printf("\n%s\n", "---> SOLUTION <---");
+	printlst_final(t_solpos, ft_sqrt(cmax - l_solve->nb_tet));
 	return (1);
 }
