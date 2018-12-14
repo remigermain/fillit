@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   bzero.c                                          .::    .:/ .      .::   */
+/*   ft_memcpy.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/01 17:38:17 by rgermain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/31 13:43:17 by rgermain    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/01 19:19:53 by rgermain     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/09 19:03:24 by rgermain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	int					count;
-	unsigned	char	*dest;
+	size_t				count;
 
 	count = 0;
-	dest = s;
 	while (n-- > 0)
-		dest[count++] = 0;
+	{
+		((unsigned char*)dest)[count] = ((unsigned char*)src)[count];
+		if (((unsigned char*)src)[count] == (unsigned char)c)
+			return (&dest[count + 1]);
+		count++;
+	}
+	return (NULL);
 }

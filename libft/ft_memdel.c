@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strchr.c                                      .::    .:/ .      .::   */
+/*   ft_memdel.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/02 18:06:43 by rgermain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/08 20:05:29 by alepercq    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/04 14:34:30 by rgermain     #+#   ##    ##    #+#       */
+/*   Updated: 2018/12/14 12:56:50 by rgermain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_memdel(void **ap)
 {
-	int		count;
-	char	*dest;
+	int count;
 
 	count = 0;
-	dest = (char*)s;
-	while (dest[count] != '\0')
+	if (!ap)
+		return ;
+	free(*ap);
+	*ap = NULL;
+}
+
+void	ft_memdeltab(char **ap)
+{
+	int count;
+
+	count = 0;
+	while (ap[count] != NULL)
 	{
-		if (dest[count] == (char)c)
-			return (dest + count);
+		free(ap[count]);
+		ap[count] = NULL;
 		count++;
 	}
-	if (dest[count] == (char)c)
-		return (dest + count);
-	return (NULL);
+	free(ap);
+	ap = NULL;
 }

@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_sqrt.c                                        .::    .:/ .      .::   */
+/*   ft_atoi.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: alepercq <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/20 15:28:08 by alepercq     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/20 15:30:42 by alepercq    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/08/02 11:14:09 by rgermain     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/31 10:37:17 by rgermain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_sqrt(int nb)
+int	ft_atoi(const char *str)
 {
-	int i;
-	int res;
+	int	a;
+	int	b;
+	int	neg;
 
-	i = 1;
-	res = 0;
-	if ((nb > -2147483648) && (nb < 2147483647))
+	a = 0;
+	b = 0;
+	neg = 1;
+	while (str[a] == ' ' || (str[a] >= 9 && str[a] <= 13))
+		a++;
+	if (str[a] == '+' || str[a] == '-')
 	{
-		while (i <= nb)
-		{
-			res = i * i;
-			if (res == nb)
-				return (i);
-			else
-				i = i + 1;
-		}
+		if (str[a] == '-')
+			neg = -1;
+		a++;
 	}
-	return (0);
+	while (str[a] >= '0' && str[a] <= '9')
+	{
+		b = ((b * 10) + (str[a] - '0'));
+		a++;
+	}
+	return (b * neg);
 }

@@ -6,7 +6,7 @@
 /*   By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/07 18:10:38 by rgermain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/20 15:31:03 by alepercq    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/14 12:56:35 by rgermain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,7 +17,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
-# include "get_next_line.h"
 
 typedef struct	s_list
 {
@@ -81,7 +80,7 @@ size_t			ft_strlcat(char *dst, const char *src, size_t size);
 size_t			ft_strlen(const char *s);
 t_list			*ft_lstmap(t_list *lst, t_list*(*f)(t_list *elem));
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-void			ft_lstadd(t_list **alst, t_list *t_new);
+void			ft_lstadd(t_list **alst, t_list *new);
 void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
 t_list			*ft_lstnew(void const *content, size_t content_size);
@@ -114,10 +113,7 @@ int				ft_iscntrl(char c);
 int				ft_isgraph(char c);
 int				ft_isxdigit(char c);
 void			ft_printtab(char **tab);
-char			*ft_strncpychr(const char *str, int c);
-char			*ft_strcpychr(const char *str, int c);
-long			ft_intlen(int nb, int base);
-char			**ft_createtab(int nb, char c);
-int				ft_sqrt(int nb);
+char			**ft_createtab(int size, char c);
+void			ft_memdeltab(char **tab);
 
 #endif

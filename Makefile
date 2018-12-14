@@ -6,7 +6,7 @@
 #    By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/01 15:39:03 by rgermain     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/21 16:28:47 by alepercq    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/12/14 13:44:35 by rgermain    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -22,14 +22,12 @@ INCLUDE	=	-Iincludes
 HEADER	=	fillit.h color.h
 
 SRC		=	main.c main_manager.c checkfiles.c lst_init.c \
-			tab_manager.c tab_utils.c \
-			algo_manager.c algo_u_init.c algo_u_find.c algo_u_remove.c \
-			algo_utils.c utils.c algo_valid.c
+			resolve_manager.c utils.c
 
 OBJ		=	$(SRC:.c=.o)
 
 DSRC	=	
-DOBJ	=	obj/
+DOBJ	=
 DHEADER	=	
 PATH_ALL = $(DOBJ)
 
@@ -41,7 +39,7 @@ all: $(NAME)
 
 $(NAME): $(COBJ)
 	@make -C libft/ 
-	@gcc -o3 $(CFLAGS) $(INCLUDE) $(LIBFT) $? -o $(NAME)
+	@gcc $(CFLAGS) $(INCLUDE) $(LIBFT) $? -o $(NAME)
 	@echo "Compilation de l'executable" $(NAME)
 
 $(PATH_ALL):
@@ -54,12 +52,12 @@ $(DOBJ)%.o : $(DSRC)%.c $(CHEADER) | $(PATH_ALL)
 	@echo "Compilation des objects "$<
 
 clean:
-	@rm -rf $(DOBJ)
-	@Make -C libft/ clean
+	@rm -rf $(COBJ)
+	@make -C libft/ clean
 
 fclean: clean
 	@rm -f $(NAME)
-	@Make -C libft/ fclean
+	@make -C libft/ fclean
 	@echo "Suppresion de l'executble "$(NAME)
 
 re: fclean all

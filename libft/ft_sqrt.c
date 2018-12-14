@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_memcpy.c                                      .::    .:/ .      .::   */
+/*   ft_sqrt.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/01 19:19:53 by rgermain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/08 20:01:49 by alepercq    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/08/03 16:39:23 by rgermain     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/10 17:59:49 by rgermain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+int	ft_sqrt(int nb)
 {
-	size_t				count;
+	int a;
 
-	count = 0;
-	while (n-- > 0)
-	{
-		((unsigned char*)dest)[count] = ((unsigned char*)src)[count];
-		if (((unsigned char*)src)[count] == (unsigned char)c)
-			return (dest + count + 1);
-		count++;
-	}
-	return (NULL);
+	a = 1;
+	if (nb > 2147395600)
+		return (0);
+	while (a * a < nb)
+		a++;
+	if ((a * a) == nb)
+		return (a);
+	else
+		return (0);
 }

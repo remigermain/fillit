@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strncpychr.c                                  .::    .:/ .      .::   */
+/*   ft_isalpha.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/01 14:59:00 by rgermain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/01 15:04:08 by rgermain    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/03 14:21:45 by rgermain     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/03 15:01:34 by rgermain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncpychr(const char *s, int c)
+int	ft_isalpha(int c)
 {
-	int count;
-	int len;
+	unsigned char c2;
 
-	count = 0;
-	len = ft_strlen(s);
-	if (!s)
-		return (NULL);
-	while (s[count] != '\0' && s[count] != c)
-		count++;
-	if (s[count] == '\n')
-		count++;
-	if (count == len)
-		return (NULL);
-	return (ft_strsub(s, count, (len - count)));
+	c2 = (unsigned char)c;
+	if (c > 122 || c < 65 || (c > 90 && c < 97))
+		return (0);
+	else
+		return (1);
 }

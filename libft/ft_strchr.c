@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_atoi.c                                        .::    .:/ .      .::   */
+/*   ft_strchar.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/08/02 11:14:09 by rgermain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/01 18:27:26 by rgermain    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/02 18:06:43 by rgermain     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/03 18:36:14 by rgermain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+char	*ft_strchr(const char *s, int c)
 {
-	int	a;
-	int	b;
-	int	neg;
+	int		locat;
+	int		count;
+	char	*dest;
 
-	a = 0;
-	b = 0;
-	neg = 1;
-	while (str[a] == ' ' || (str[a] >= 9 && str[a] <= 13))
-		a++;
-	if (str[a] == '+' || str[a] == '-')
+	locat = 0;
+	count = 0;
+	dest = (char*)s;
+	while (dest[count] != '\0')
 	{
-		if (str[a] == '-')
-			neg = -1;
-		a++;
+		if (dest[count] == (char)c)
+			return (dest + count);
+		count++;
 	}
-	while (str[a] >= '0' && str[a] <= '9')
-	{
-		b = ((b * 10) + (str[a] - '0'));
-		a++;
-	}
-	return (b * neg);
+	if (dest[count] == (char)c)
+		return (dest + count);
+	return (NULL);
 }

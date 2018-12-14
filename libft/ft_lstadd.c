@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_memdel.c                                      .::    .:/ .      .::   */
+/*   ft_lstadd.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/04 14:34:30 by rgermain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/12 15:37:07 by rgermain    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/09 19:45:50 by rgermain     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/10 11:58:07 by rgermain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+void	ft_lstadd(t_list **alst, t_list *new)
 {
-	int count;
-
-	count = 0;
-	if (!ap)
-		return ;
-	while (ap[count])
-	{
-		free(ap[count]);
-		ap[count] = NULL;
-	}
+	new->next = *alst;
+	*alst = new;
 }

@@ -6,12 +6,32 @@
 /*   By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/04 15:24:04 by rgermain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/01 15:06:56 by rgermain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/17 16:24:51 by rgermain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static long	ft_len_nb(long n, int base)
+{
+	int count;
+
+	count = 0;
+	if (n == -2147483648 && base == 10)
+		return (11);
+	if (n < 0 && base == 10)
+	{
+		n = n * -1;
+		count++;
+	}
+	while (n >= base)
+	{
+		count++;
+		n = n / base;
+	}
+	return (count + 1);
+}
 
 static char	*ft_itoa_cal(char *str, long n, int len, int base)
 {
@@ -41,7 +61,7 @@ char		*ft_itoa_base(int nb, int base)
 		return (NULL);
 	if (n < 0 && base != 10)
 		n = -n;
-	len = ft_intlen(n, base);
+	len = ft_len_nb(n, base);
 	if (!(str = malloc(sizeof(char) * len + 1)))
 		return (NULL);
 	str[len] = '\0';

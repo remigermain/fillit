@@ -6,7 +6,7 @@
 /*   By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/31 14:32:21 by rgermain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/07 11:20:52 by alepercq    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/14 12:38:00 by rgermain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -73,6 +73,7 @@ int		ft_check_allbloc(char *str_map)
 			return (-1);
 		i_c += 4;
 	}
+	ft_memdeltab(tab);
 	return (1);
 }
 

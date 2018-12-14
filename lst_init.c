@@ -6,18 +6,18 @@
 /*   By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/31 15:57:16 by rgermain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/08 14:11:25 by rgermain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/14 13:45:48 by rgermain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		add_digit(char c)
+char	add_digit(char c, t_map *l_tmp)
 {
 	if (c == '.')
-		return (0);
-	return (1);
+		return ('.');
+	return (l_tmp->letter);
 }
 
 int		lst_populate(t_map **list_map, char *str_map, int i_c, int i_l)
@@ -30,8 +30,7 @@ int		lst_populate(t_map **list_map, char *str_map, int i_c, int i_l)
 	while (str_map[i] != '\0')
 	{
 		while (i_l != 4)
-			l_tmp->map[i_c][i_l++] = add_digit(str_map[i++]);
-		l_tmp->type = check_type(l_tmp->map, 0, 0);
+			l_tmp->map[i_c][i_l++] = add_digit(str_map[i++], l_tmp);
 		i_c++;
 		i_l = 0;
 		if (str_map[i] == '\n' && str_map[i + 1] == '\n')
@@ -43,7 +42,6 @@ int		lst_populate(t_map **list_map, char *str_map, int i_c, int i_l)
 		i++;
 	}
 	free(str_map);
-	l_tmp->next = NULL;
 	return (1);
 }
 
