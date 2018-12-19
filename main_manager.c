@@ -6,7 +6,7 @@
 /*   By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/31 15:57:16 by rgermain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/14 13:28:14 by rgermain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/19 18:18:22 by rgermain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -54,5 +54,6 @@ int		main_manager(char *files)
 	if (lst_create(&list_map, str_map) == -1)
 		return (-1);
 	resolve_manager(&list_map);
+	ft_freelist(list_map);
 	return (1);
 }

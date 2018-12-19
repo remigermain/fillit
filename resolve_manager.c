@@ -6,7 +6,7 @@
 /*   By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/12/12 16:11:42 by rgermain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/14 13:43:06 by rgermain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/19 18:18:31 by rgermain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -120,5 +120,4 @@ void	resolve_manager(t_map **lst_base)
 	}
 	ft_printtab(map);
 	ft_memdeltab(map);
-	ft_memdel((void**)lst_base);
 }

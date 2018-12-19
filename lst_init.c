@@ -6,12 +6,21 @@
 /*   By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/31 15:57:16 by rgermain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/14 13:45:48 by rgermain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/19 18:17:41 by rgermain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+void	ft_freelist(t_map *lst)
+{
+	if (lst != NULL)
+	{
+		ft_freelist(lst->next);
+		free(lst);
+	}
+}
 
 char	add_digit(char c, t_map *l_tmp)
 {

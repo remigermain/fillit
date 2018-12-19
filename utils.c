@@ -6,7 +6,7 @@
 /*   By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/12/12 23:05:33 by rgermain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/14 12:34:29 by rgermain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/19 18:16:57 by rgermain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -57,19 +57,23 @@ void	copy_tab(char **src, char ***dest2, int size)
 	int		a;
 	int		b;
 
-	dest = ft_createtab(size, '.');
+	if (!(dest = malloc(sizeof(char*) * size + 1)))
+		return ;
 	a = 0;
 	while (src[a] != NULL)
 	{
 		b = 0;
+		if (!(dest[a] = malloc(sizeof(char) * size + 1)))
+			return ;
 		while (src[a][b] != '\0')
 		{
-			if (src[a][b] != '.')
-				dest[a][b] = src[a][b];
+			dest[a][b] = src[a][b];
 			b++;
 		}
+		dest[a][b] = '\0';
 		a++;
 	}
+	dest[a] = NULL;
 	*dest2 = dest;
 }
 

@@ -6,7 +6,7 @@
 /*   By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/30 16:50:01 by rgermain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/14 12:34:46 by rgermain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/19 18:17:58 by rgermain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,5 +70,6 @@ int		check_finalmap(char **map, int nb);
 int		initposition_a(char tet[4][4]);
 int		initposition_b(char tet[4][4]);
 int		ft_sqrt2(int nb);
+void	ft_freelist(t_map *lst);
 
 #endif
