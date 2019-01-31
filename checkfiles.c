@@ -6,7 +6,7 @@
 /*   By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/31 14:32:21 by rgermain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/20 15:14:12 by rgermain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/31 19:15:12 by rgermain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -68,7 +68,8 @@ int		ft_check_allbloc(char *str_map)
 	i_c = 0;
 	i_l = 0;
 	nb_tet = 0;
-	tab = ft_strsplit(str_map, '\n');
+	if (!(tab = ft_strsplit(str_map, '\n')))
+		return (-1);
 	while (tab[i_c] != NULL)
 	{
 		if ((ft_check_bloc(tab, i_c, i_l)) < 6)

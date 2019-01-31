@@ -6,7 +6,7 @@
 #    By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/01 15:39:03 by rgermain     #+#   ##    ##    #+#        #
-#    Updated: 2018/12/14 13:44:35 by rgermain    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/01/31 19:16:33 by rgermain    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -38,15 +38,13 @@ CHEADER	=	$(addprefix $(DHEADER), $(HEADER))
 all: $(NAME)
 
 $(NAME): $(COBJ)
-	@make -C libft/ 
+	@make -C libft/
 	@gcc $(CFLAGS) $(INCLUDE) $(LIBFT) $? -o $(NAME)
 	@echo "Compilation de l'executable" $(NAME)
 
 $(PATH_ALL):
 	@mkdir -p $(DOBJ)
 
-#$(DOBJ)%.o : $(DSRC)%.c $(CHEADER)
-#	@mkdir -p $(DOBJ)
 $(DOBJ)%.o : $(DSRC)%.c $(CHEADER) | $(PATH_ALL)
 	@gcc $(CFLAGS) $(INCLUDE) -c $< -o $@
 	@echo "Compilation des objects "$<

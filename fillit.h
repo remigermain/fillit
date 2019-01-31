@@ -6,22 +6,14 @@
 /*   By: rgermain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/30 16:50:01 by rgermain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/19 18:17:58 by rgermain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/31 19:21:50 by rgermain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
-
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft/libft.h"
+# include "libft/includes/libft.h"
 
 typedef struct s_map	t_map;
 
